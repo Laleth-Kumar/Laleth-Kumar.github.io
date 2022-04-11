@@ -24,6 +24,15 @@
     font-weight: bold;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    row-gap: 15px;
+}
+
 input[type=text]{
     padding: 10px;
     width: 70%;

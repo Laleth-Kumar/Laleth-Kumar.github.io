@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chat Corner</title>
     <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
   </head>
 
   <body>
     <div class="container">
       <p>Welcome to Chat Corner</p>
       <label for="user-name" class="username">Username</label>
-      <input
-        type="text"
-        placeholder="Enter username"
-        name="user-name"
-        required
-      />
-        <button type="submit">Join</button>
+      <form action="./page_chat.html">
+        <input
+          type="text"
+          placeholder="Enter username"
+          name="user-name"
+          class="username-input"
+          maxlength="10"
+          required
+        />
+        <button type="submit" class="submit">Join</button>
+      </form>
     </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
