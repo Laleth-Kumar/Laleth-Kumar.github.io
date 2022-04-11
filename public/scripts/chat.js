@@ -1,40 +1,47 @@
-
-import { socket } from "./index.js";
+const URL = "http://localhost:8080";
 const CHAT_REFS = {
     output: document.querySelector(".output"),
     feedback: document.querySelector(".feedback"),
     message: document.querySelector(".message"),
     send: document.querySelector(".send")
 }
+const QUERY = new URLSearchParams(location.search);
+const USERNAME = QUERY.get("user-name");
+const SOCKET = io.connect(URL);
 
 (function (){
+    SOCKET.emit('newuser', USERNAME);
     CHAT_REFS.message.addEventListener("keypress", giveFeedback);
     CHAT_REFS.send.addEventListener("click", sendMessage);
 })();
 
 
 function giveFeedback(){
-    socket.emit('typing',userName)
+    SOCKET.emit('typing',USERNAME)
 }
 
 function sendMessage(){
-    socket.emit('message',{
-        userName,
-        message: message.value
+    SOCKET.emit('message',{
+        userName: USERNAME,
+        message: CHAT_REFS.message.value
     })
-    message.value = '';
+    CHAT_REFS.message.value = '';
 }
 
-socket.on('newuser',function(data){
+SOCKET.on('newuser',function(data){
     CHAT_REFS.feedback.innerHTML = '';
-    output.innerHTML += `<p> <strong>` + data + `joined</strong> </p>`; 
+    CHAT_REFS.output.innerHTML += `<p> <strong>` + data + ` joined</strong> </p><br>`; 
 })
 
-socket.on('typing', function(data){
-    CHAT_REFS.feedback.innerHTML = `<p>  <em>`+ data + `is typing...</em></p>`;
+SOCKET.on('typing', function(data){
+    CHAT_REFS.feedback.innerHTML = `<p>  <em>`+ data + ` is typing...</em></p>`;
 })
 
-socket.on('message', function(data){
+SOCKET.on('message', function(data){
     CHAT_REFS.feedback.innerHTML = '';
-    CHAT_REFS.output.innerHTML += `<p> <strong>` + data.userName + `:</strong>`+ data.message + `</p>`;
+    CHAT_REFS.output.innerHTML += `<div class="message"><p> <strong>` + data.userName + `:</strong>`+ data.message + `</p></div><br>`;
+})
+
+SOCKET.on('left', function(data){
+    CHAT_REFS.output.innerHTML += `<p> <strong>` + data + `left</strong> </p><br>`;
 })

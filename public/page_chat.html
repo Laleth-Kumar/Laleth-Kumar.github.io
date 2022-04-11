@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Chat Corner</title>
-        <link rel="stylesheet" href="./styles/styles.css">
-        <script type ="module" src="./scripts/chat.js"></script>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat Corner</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="socket.io/socket.io.js"></script>
+    <script type="module" src="./scripts/chat.js"></script>
+  </head>
 
-    <body>
-        <div class="chat">
-            <h2>Chat Corner</h2>
-            <div class="chat-window">
-                <div class="output"></div>
-                <div class="feedback"></div>
-            </div>
-            <div class="message-container">            
-                <input type="text" class="message" placeholder="Type a message">
-                <button class="send" > Send </button>
-            </div>
-        </div>
-    </body>
+  <body>
+    <div class="chat">
+      <h2>Chat Corner</h2>
+      <div class="chat-window">
+        <div class="output"></div>
+        <br>
+        <div class="feedback"></div>
+      </div>
+      <div class="message-container">
+        <input type="text" class="message" placeholder="Type a message" />
+        <button class="send">Send</button>
+      </div>
+    </div>
+  </body>
 </html>

@@ -13,6 +13,7 @@
 .chat-window{
     height: 80vh;
     border: 1px solid black;
+    justify-content: center;
 }
 
 .message-container{
@@ -24,4 +25,11 @@
     display: inline;
     float: right;
     width: 150px;
+}
+.message{
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin: 5px;
 }
