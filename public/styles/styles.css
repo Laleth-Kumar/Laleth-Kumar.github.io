@@ -1,3 +1,5 @@
 @import "reset.css";
 @import "font.css";
 @import "shared_styles.css";
+@import "page_login.css";
+@import "page_chat.css";
